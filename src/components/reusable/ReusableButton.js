@@ -1,10 +1,10 @@
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const ReusableButton = ({ onPress, btnText, textColor, width, backgroundColor, borderWidth, borderColor, fontFamily, fontSize, height }) => { 
+const ReusableButton = ({ onPress, btnText, textColor, width, backgroundColor, borderWidth, borderColor, fontFamily, fontSize, height, margin }) => { 
     const styles = StyleSheet.create({
         container: {
-            margin: 5,
+            margin: margin ? margin : 5,
             height: height, 
             width: width, 
             backgroundColor: backgroundColor, 

@@ -1,12 +1,16 @@
 import { StyleSheet, Text, View, Dimensions } from 'react-native'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import HeightSpacer from './HeightSpacer';
 import ReusableText from './ReusableText';
+import { Context as AuthContext } from '../../context/AuthContext'; 
 import ReusableTextInput from './ReusableTextInput'; 
+import ReusableButton from './ReusableButton';
+import { AntDesign } from '@expo/vector-icons'; 
 
 const {width, height} = Dimensions.get('window')
 
-const ReusableForm = () => {
+const ReusableForm = ({ onSubmit }) => {
+    const { state } = useContext(AuthContext); 
     const [email, setEmail] = useState(''); 
     const [password, setPassword] = useState(''); 
 
@@ -43,6 +47,17 @@ const ReusableForm = () => {
     return (
         <View style={styles.container}>
             {renderFields()}
+
+            <HeightSpacer height={20} />
+
+            <ReusableButton btnText={<AntDesign name="arrowright" size={24} color="white" />} width={width*0.125} textColor="white" fontSize={18} backgroundColor="#7bec00" fontFamily='Regular' 
+            onPress={() => onSubmit({ email, password })}/> 
+
+            {state.errorMessage ? <View>
+                <HeightSpacer height={20} />
+                <Text style={{color: 'red'}}>{state.errorMessage}</Text>
+            </View> : null}
+
         </View>
   )
 }

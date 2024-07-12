@@ -4,7 +4,7 @@ import Constants from 'expo-constants';
 import HeightSpacer from '../components/reusable/HeightSpacer';
 import ReusableText from '../components/reusable/ReusableText';
 import ReusableButton from '../components/reusable/ReusableButton'; 
-import { FontAwesome, MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons'; 
+import { FontAwesome, MaterialCommunityIcons, FontAwesome6 } from '@expo/vector-icons'; 
 import ReusableOption from '../components/reusable/ReusableOption'; 
 
 const { width, height } = Dimensions.get('window')
@@ -17,11 +17,11 @@ const MainDashboard = () => {
 
         <HeightSpacer height={10} /> 
 
-        <View style={{backgroundColor: 'lightgray', alignItems: 'center', padding: 15, borderRadius: 10}}>
+        <View style={{backgroundColor: 'lightgray', alignItems: 'center', padding: 15, borderRadius: 10, width: width*0.8, alignSelf: 'center'}}>
 
           {/* Recommended Videos */} 
 
-          <View style={{backgroundColor: '#e1f2ce', justifyContent: 'center', alignItems: 'center', width: width*0.8, height: height*0.175, borderRadius: 10}}>
+          <View style={{backgroundColor: '#e1f2ce', justifyContent: 'center', alignItems: 'center', width: width*0.7, height: height*0.175, borderRadius: 10}}>
 
             <Image style={{width: width*0.35, height: height*0.15, borderRadius: 10}} source={require('../../assets/images/medi-cover.png')} />
 
@@ -45,7 +45,7 @@ const MainDashboard = () => {
 
         </View>
 
-        <HeightSpacer height={40} />
+        <HeightSpacer height={30} />
 
         <View style={{backgroundColor: 'lightgray', padding: 15, borderRadius: 10}}> 
 
@@ -56,7 +56,7 @@ const MainDashboard = () => {
           <View style={{flexDirection: 'row', flexWrap: 'wrap', width: width*0.8, height: height*0.125, justifyContent: 'space-between', margin: 10}}> 
             <ReusableOption optionPic={<FontAwesome name="bell" size={24} color="black" /> } label="Nature Scenes"/>
             <ReusableOption optionPic={<MaterialCommunityIcons name="waterfall" size={24} color="black" /> } label="Waterfall Views"/>
-            <ReusableOption optionPic={<FontAwesome5 name="mountain" size={24} color="black" /> } label="Mountain Vistas"/>
+            <ReusableOption optionPic={<FontAwesome6 name="mountain" size={24} color="black" /> } label="Mountain Vistas"/>
             <ReusableOption optionPic={<MaterialCommunityIcons name="weather-sunset" size={24} color="black" />  } label="Sunset Beauty"/> 
           </View>
 

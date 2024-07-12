@@ -1,13 +1,19 @@
 import { StyleSheet, Text, View, Image, Dimensions } from 'react-native'
-import React from 'react'
-import HeightSpacer from '../components/reusable/HeightSpacer';
+import React, { useContext, useEffect } from 'react'
+import HeightSpacer from '../components/reusable/HeightSpacer'; 
+import { Context as AuthContext } from '../context/AuthContext'; 
 import ReusableButton from '../components/reusable/ReusableButton';
 import { useNavigation } from '@react-navigation/native';
 
 const {width, height} = Dimensions.get('window')
 
 const Onboarding = () => {
+    const { state, tryLocalSignIn } = useContext(AuthContext); 
     const navigation = useNavigation(); 
+
+    useEffect(() => {
+        tryLocalSignIn(); 
+    }, []) 
 
     return (
     <View style={styles.container}>
@@ -36,7 +42,7 @@ const Onboarding = () => {
 
             <HeightSpacer height={15} /> 
 
-            <ReusableButton btnText="Explore without an account" width={width*0.75} textColor="gray" fontSize={18} borderWidth={0} borderRadius={25} fontFamily='Regular' onPress={() => navigation.navigate('MainDashboard')} /> 
+            <ReusableButton btnText="Explore without an account" width={width*0.75} textColor="gray" fontSize={18} borderWidth={0} borderRadius={25} fontFamily='Regular' onPress={() => navigation.navigate('MainTab', { screen: 'MainDashboard'})} /> 
         </View>
 
     </View> 

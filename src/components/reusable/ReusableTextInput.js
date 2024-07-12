@@ -1,26 +1,39 @@
 import { StyleSheet, TextInput, View } from 'react-native';
 import React from 'react';
 
-// Default number of lines is 1 
-const ReusableTextInput = ({ placeholder, value, onChangeText, fontFamily, fontSize, color, 
-  secureTextEntry, width, height, borderColor, borderWidth, multiline = false, maxLines = null, borderRadius 
-}) => { 
+const ReusableTextInput = ({
+  placeholder = "Enter text",
+  value,
+  onChangeText,
+  fontFamily = "System",
+  fontSize = 14,
+  color = "#000",
+  secureTextEntry = false,
+  width = "100%",
+  height = 40,
+  borderColor = "#000",
+  borderWidth = 1,
+  multiline = false,
+  maxLines = null,
+  borderRadius = 5,
+  onSubmitEditing,
+}) => {
   const styles = StyleSheet.create({
     container: {
       width: width,
       height: height,
       borderColor: borderColor,
       borderWidth: borderWidth,
-      padding: 10, 
-      borderRadius: borderRadius
-
+      padding: 10,
+      borderRadius: borderRadius,
+      justifyContent: 'center'
     },
     textStyle: {
       fontFamily: fontFamily,
       fontSize: fontSize,
       color: color,
-      textAlignVertical: 'top', // Ensures text starts at the top for multiline inputs, otherwise at the center 
-      flex: 1, 
+      textAlignVertical: multiline ? 'top' : 'center',
+      flex: 1,
       textAlign: 'center'
     },
   });
@@ -49,6 +62,7 @@ const ReusableTextInput = ({ placeholder, value, onChangeText, fontFamily, fontS
         onChangeText={handleTextChange}
         secureTextEntry={secureTextEntry}
         multiline={multiline}
+        onSubmitEditing={onSubmitEditing}
       />
     </View>
   );
